@@ -130,5 +130,50 @@ foreach (var name in names)
   Console.WriteLine($"Hello {name.ToUpper()}!");
 }
 Console.WriteLine($"The name \"Antoine\" is now located at index {names.IndexOf("Antoine")} inside the \"names\" list.");
-
 Console.WriteLine();
+
+
+// Language Integrated Query (LINQ)
+Console.ForegroundColor = ConsoleColor.DarkBlue;
+Console.WriteLine("[Language Integrated Query (LINQ)]");
+Console.ForegroundColor = ConsoleColor.White;
+List<int> thoughts = [0, 1, 15, 14, 16, 37, 38, 55, 66, 9, 12];
+
+for (int i = 0; i < thoughts.Count; i++)
+{
+  if (thoughts[i] > 49)
+  {
+    Console.WriteLine($"Found a floating thought over 49... it was {thoughts[i]}.");
+  }
+}
+
+IEnumerable<int> thoughtQuery =
+  from thought in thoughts
+  where thought < 49 // Note this is now less than
+  select thought;
+
+Console.WriteLine("Here are some floating thoughts under 49...");
+foreach (int i in thoughtQuery)
+{
+  Console.Write(i + " ");
+}
+Console.WriteLine("\n");
+
+
+// LINQ Query Expression Basics
+Console.ForegroundColor = ConsoleColor.DarkBlue;
+Console.WriteLine("[LINQ Query Expression Basics]");
+Console.ForegroundColor = ConsoleColor.White;
+
+List<int> scores = [12, 49, 38, 22, 4, 18, 53];
+IEnumerable<string> scoreQuery =
+  from score in scores
+  where score > 14
+  orderby score descending
+  select $"The score is {score}...";
+
+foreach (string s in scoreQuery)
+{
+  Console.WriteLine(s);
+}
+Console.WriteLine("");
