@@ -1,6 +1,4 @@
 ﻿// Hello World
-using System.Text;
-
 Console.ForegroundColor = ConsoleColor.DarkBlue;
 Console.WriteLine("[Simple Hello World]");
 Console.ForegroundColor = ConsoleColor.White;
@@ -243,3 +241,20 @@ Console.WriteLine("o o o o o o o o o o o o o o o o o o\n");
 Thread.Sleep(milliseconds);
 Console.WriteLine("A square made up of o's sort of...");
 Console.WriteLine();
+
+// LINQ Method Syntax vs Query
+Console.ForegroundColor = ConsoleColor.DarkBlue;
+Console.WriteLine("[LINQ Method Syntax vs Query]");
+Console.ForegroundColor = ConsoleColor.White;
+List<int> scores2 = [51, 42, 12, 73, 5, 17, 16];
+
+int setValue = 15; // every number in scores2 that is greater than this will be printed
+var scoreQuery2 = scores2.Where(s => s > setValue).OrderByDescending(s => s);
+
+List<int> myScores = scoreQuery2.ToList();
+
+Console.WriteLine($"Values greater than {setValue}:\n");
+foreach (var score in myScores)
+{
+  Console.WriteLine($"{score}\n");
+}
